@@ -26,16 +26,15 @@ fun HomeScreen(navController: NavController) {
                 title =
                 { Text(text = "Movies") })
         },
-        contentColor = Color.Black,
+
     ) { values ->
         Text(text = "$values")
         MainContent(navController = navController)
     }
 }
-
     @Composable
     fun MainContent(navController: NavController, movieList: List<String> = listOf(
-        "Avator","Bat Man","Titanic","Life","Losy","Soul","Another Film","THe Best","Little kids Book"
+        "Avator","Bat Man","Titanic","Life","Loocy","Soul","Another Film","The Best","Little kids Book"
     )) {
         Column(modifier= Modifier.padding(top=60.dp)
         ) {

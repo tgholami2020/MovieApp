@@ -13,10 +13,12 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.FavoriteBorder
 import androidx.compose.material3.Button
 import androidx.compose.material3.ColorScheme
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
@@ -26,6 +28,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.unit.DpSize
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 
@@ -34,38 +37,54 @@ import androidx.navigation.NavController
 fun DetailScreen(navController: NavController, movieData: String?) {
 
     Scaffold(topBar = {
-        TopAppBar(title = { Text(text = "") })
+        TopAppBar(title = { Text(text = "Movie") },
 
-        Row(
-            horizontalArrangement = Arrangement.Center,
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            Icon(imageVector = Icons.Default.ArrowBack,
-                contentDescription = "Arrow Back",
-                modifier = Modifier.clickable {
-                    navController.popBackStack()
-                })
-            Spacer(modifier = Modifier.width(100.dp))
-            Text(text = "Movies")
+            navigationIcon = {
+                IconButton(onClick = { /*TODO*/ }) {
+                    Icon(imageVector =Icons.Default.ArrowBack ,
+                        contentDescription ="Go Back",
+                        modifier= Modifier.clickable {
+                            navController.popBackStack()
+                        })
+
+                }
+            },
+        actions = {IconButton(onClick = { /*TODO*/ }) {
+            Icon(imageVector = Icons.Default.FavoriteBorder,
+                contentDescription = "my favorite")
+            }
         }
+            )
+
+//        Row(modifier= Modifier
+//            .height(50.dp)
+//            .padding(4.dp),
+//            horizontalArrangement = Arrangement.Center,
+//            verticalAlignment = Alignment.CenterVertically
+//        ) {
+//            Icon(imageVector = Icons.Default.ArrowBack,
+//                contentDescription = "Arrow Back",
+//                modifier = Modifier.clickable {
+//                    navController.popBackStack()
+//                })
+//            Spacer(modifier = Modifier.width(50.dp))
+//            Text(text = "Movies")
+//        }
     })
-
-{ movieData->
-        Text(text = movieData.toString(), style = MaterialTheme.typography.bodyLarge)
-
-    }
+{value->
+      //  Text(text = movieData.toString(), style = MaterialTheme.typography.bodyLarge)
     Surface (modifier= Modifier
+        .padding(value)
         .fillMaxWidth()
         .fillMaxWidth()
-        .background(Color.Cyan)
     ){
-        Column (modifier= Modifier.padding(60.dp),
-            horizontalAlignment = Alignment.Start,
+        Column (
+            horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center,
         ){
             Text(text = movieData.toString(),
-                style = MaterialTheme.typography.bodyMedium)
+                style = MaterialTheme.typography.bodyLarge)
         }
     }
-
+    }
 }

@@ -60,13 +60,11 @@ class MainActivity : ComponentActivity() {
 @OptIn(InternalComposeApi::class)
 @ExperimentalMaterial3Api
 @Composable
-
 fun MyApp(content: @Composable () -> Unit){
     MovieAppTheme {
         content()
 }
 }
-
 @Composable
 fun MovieRow(movie:String
              ,onItemClicked: (String)-> Unit ={}){
@@ -82,19 +80,21 @@ fun MovieRow(movie:String
                   ) {
         Row (
             verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.Center){
-//            Surface(modifier=
-//            Modifier
-//                .padding(12.dp)
-//                .size(100.dp),
-//                shape= RectangleShape,
-//                shadowElevation = 4.dp)
-//            {
-//                   Icon(imageVector = Icons.Default.AccountBox,
-//                        contentDescription = "Movie Images")
-//            }
+            horizontalArrangement = Arrangement.Center
+            )
+        {
+            Surface(modifier=
+            Modifier
+                .padding(12.dp)
+                .size(100.dp),
+                shape= RectangleShape,
+                shadowElevation = 4.dp)
+            {
+                   Icon(imageVector = Icons.Default.AccountBox,
+                        contentDescription = "Movie Images")
+            }
+            Text(text = movie )
         }
-        Text(text = movie )
     }
 }
 
