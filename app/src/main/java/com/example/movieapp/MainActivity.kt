@@ -43,6 +43,7 @@ import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.movieapp.model.Movie
 import com.example.movieapp.navigation.MovieNavigation
 import com.example.movieapp.ui.theme.MovieAppTheme
 
@@ -65,38 +66,7 @@ fun MyApp(content: @Composable () -> Unit){
         content()
 }
 }
-@Composable
-fun MovieRow(movie:String
-             ,onItemClicked: (String)-> Unit ={}){
-    Card (modifier= Modifier
-        .padding(4.dp)
-        .fillMaxWidth()
-        .clickable {
-            onItemClicked(movie)
-        }
-        .height(130.dp),
-        shape = RoundedCornerShape(corner = CornerSize(16.dp))
-      //  elevation = (6.dp)
-                  ) {
-        Row (
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.Center
-            )
-        {
-            Surface(modifier=
-            Modifier
-                .padding(12.dp)
-                .size(100.dp),
-                shape= RectangleShape,
-                shadowElevation = 4.dp)
-            {
-                   Icon(imageVector = Icons.Default.AccountBox,
-                        contentDescription = "Movie Images")
-            }
-            Text(text = movie )
-        }
-    }
-}
+
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Preview(showBackground = true)
